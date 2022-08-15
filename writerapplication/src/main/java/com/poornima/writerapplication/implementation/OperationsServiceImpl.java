@@ -29,8 +29,7 @@ public class OperationsServiceImpl implements OperationsService {
     @Override
     public String stupidRemover(String str) {
         if(str!=null){
-            String replacedString = str.replaceAll("stupid","s*****");
-            return replacedString;
+            return str.replace("stupid","s*****");
         }
         return null;
     }
@@ -38,7 +37,7 @@ public class OperationsServiceImpl implements OperationsService {
     @Override
     public String duplicateRemover(String str) {
         if(str!=null){
-            String result = str;
+            String result;
             List<String> list = new ArrayList<>(Arrays.asList(str.split("\\s")));
             TreeSet<String> seen = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
             list.removeIf(s -> !seen.add(s));

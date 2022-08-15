@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.nio.file.Path;
-import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -16,28 +15,37 @@ public class FileWriter implements IWriterService {
     @Autowired
     GenearlService genearlService;
 
-    @Override
-    public String writer(String str, List<Operation> operationList) {
+    private static boolean isClosed = false;
 
-        if(!operationList.isEmpty()){
-            for(Operation op : operationList){
-                str = genearlService.generalOperation(str, op);
+    @Override
+    public String writer(String str, List<Operation> operationList) throws IOException {
+        if(!isClosed){
+            if(!operationList.isEmpty()){
+                for(Operation op : operationList){
+                    str = genearlService.generalOperation(str, op);
+                }
             }
+            String fileName = Constants.FILE_NAME;
+            String filePath = Constants.FILE_PATH+fileName;
+            File file = new File(filePath);
+            try(FileOutputStream fos = new FileOutputStream(file, true);
+                BufferedOutputStream bos = new BufferedOutputStream(fos)) {
+                byte[] bytes = str.getBytes();
+                bos.write(bytes);
+            }catch (IOException e) {
+                e.printStackTrace();
+            }
+            return filePath;
         }
-        LocalDate today = LocalDate.now();
-        String filePath = Constants.FILE_PATH+"FileWriter"+today+".txt";
-        File file = new File(filePath);
-        try(FileOutputStream fos = new FileOutputStream(file);
-            BufferedOutputStream bos = new BufferedOutputStream(fos)) {
-            byte[] bytes = str.getBytes();
-            bos.write(bytes);
-        }catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return filePath;
+        return Constants.FILE_WRITER_CLOSED;
     }
+
+    @Override
+    public boolean close() {
+        isClosed = true;
+        return true;
+    }
+
     public String readFromFile(String fileName){
         Path filePath = Path.of(Constants.FILE_PATH+fileName+".txt");
         StringBuilder contentBuilder = new StringBuilder();

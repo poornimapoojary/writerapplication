@@ -70,6 +70,13 @@ class FileWriterControllerTest {
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                         .andExpect(status().isOk());
     }
+
+    @Test
+     void close() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/FileWriter/close")
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(status().isOk());
+    }
     protected String mapToJson(Object obj) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.writeValueAsString(obj);

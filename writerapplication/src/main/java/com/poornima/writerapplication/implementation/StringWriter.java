@@ -1,5 +1,6 @@
 package com.poornima.writerapplication.implementation;
 
+import com.poornima.writerapplication.constants.Constants;
 import com.poornima.writerapplication.service.GenearlService;
 import com.poornima.writerapplication.service.IWriterService;
 import com.poornima.writerapplication.valueobject.Operation;
@@ -13,14 +14,25 @@ public class StringWriter implements IWriterService {
     @Autowired
     GenearlService genearlService;
 
+    private static boolean isClosed = false;
+
     @Override
     public String writer(String str, List<Operation> operationList) {
-        if (!operationList.isEmpty()) {
-            for (Operation op : operationList) {
-                str = genearlService.generalOperation(str, op);
+        if(!isClosed){
+            if (!operationList.isEmpty()) {
+                for (Operation op : operationList) {
+                    str = genearlService.generalOperation(str, op);
+                }
             }
+            return str;
         }
-        return str;
+        return Constants.STRING_WRITER_CLOSED;
+    }
+
+    @Override
+    public boolean close() {
+        isClosed = true;
+        return true;
     }
 
     public String readFromString(String str){
