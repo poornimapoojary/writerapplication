@@ -1,0 +1,196 @@
+{
+	"info": {
+		"_postman_id": "b106c42b-2eb6-4634-8842-ee834c463b23",
+		"name": "WriterAppliaction",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Write to file",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"writeString\" : \"Im goofmy code is done Done ..!!!\",\r\n    \"operations\" :[ \r\n        {\r\n            \"name\" : \"stupidRemover\"\r\n        } ,\r\n        {\r\n            \"name\" : \"duplicateRemover\"\r\n        },\r\n        {\r\n            \"name\" : \"toUpperCase\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8086/api/v1/FileWriter/Writer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"api",
+						"v1",
+						"FileWriter",
+						"Writer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Read from file",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8086/api/v1/FileWriter/reader/FileWriter2022-08-14",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"api",
+						"v1",
+						"FileWriter",
+						"reader",
+						"FileWriter2022-08-14"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Close File Writer",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8086/api/v1/FileWriter/close",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"api",
+						"v1",
+						"FileWriter",
+						"close"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Write to String",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"writeString\" : \"really really Stupid stupid to write this code...!!!\",\r\n    \"operations\" :[ \r\n        {\r\n            \"name\" : \"stupidRemover\"\r\n        } ,\r\n        {\r\n            \"name\" : \"duplicateRemover\"\r\n        },\r\n        {\r\n            \"name\" : \"toUpperCase\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8086/api/v1/StringWriter/Writer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"api",
+						"v1",
+						"StringWriter",
+						"Writer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Read from String",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"stringWriter\": \"REALLY STUPID S***** TO WRITE THIS CODE...!!!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8086/api/v1/StringWriter/reader",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"api",
+						"v1",
+						"StringWriter",
+						"reader"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Close String Writer",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"writeString\" : \"really really Stupid stupid to write this code...!!!\",\r\n    \"operations\" :[ \r\n        {\r\n            \"name\" : \"stupidRemover\"\r\n        } ,\r\n        {\r\n            \"name\" : \"duplicateRemover\"\r\n        },\r\n        {\r\n            \"name\" : \"toUpperCase\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8086/api/v1/StringWriter/close",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"api",
+						"v1",
+						"StringWriter",
+						"close"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
