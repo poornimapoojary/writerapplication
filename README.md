@@ -26,3 +26,4 @@ GET:http://localhost:8086/api/v1/StringWriter/reader
 http://localhost:8086/api/v1/FileWriter/close
 
 Request is passed as JSON format.
+Postman collection is uploaded. Please access URL using attached collection
